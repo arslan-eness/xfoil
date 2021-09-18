@@ -1,0 +1,14 @@
+load new_airfoil.txt
+new_airfoil
+
+oper
+visc 1e5
+pacc
+newfoil_polar.txt
+
+iter 100
+alfa 0
+
+
+
+quit
