@@ -55,11 +55,11 @@ def cross_over(x1,x2):
 def get_xfoil(airfoil):  
     
         
-    if os.path.exists("C:/Users/ENES/Desktop/xfoil/new_command.txt"):
-          os.remove("C:/Users/ENES/Desktop/xfoil/new_command.txt")
-    if os.path.exists("C:/Users/ENES/Desktop/xfoil/newfoil_polar.txt"):
-          os.remove("C:/Users/ENES/Desktop/xfoil/newfoil_polar.txt")
-    np.savetxt("C:/Users/ENES/Desktop/xfoil/new_airfoil.txt",airfoil,delimiter='\t',fmt="%10.6f")
+    if os.path.exists("new_command.txt"):
+          os.remove("new_command.txt")
+    if os.path.exists("newfoil_polar.txt"):
+          os.remove("newfoil_polar.txt")
+    np.savetxt("new_airfoil.txt",airfoil,delimiter='\t',fmt="%10.6f")
     airf_command = open("new_command.in", "w")
     airf_command.write("load new_airfoil.txt\n")
     airf_command.write("new_airfoil\n\n")
@@ -79,7 +79,7 @@ def get_xfoil(airfoil):
     except subprocess.TimeoutExpired:
         subprocess.run('taskkill /f /im "xfoil.exe"',shell = True)
         
-    polar_data = np.loadtxt("C:/Users/ENES/Desktop/xfoil/newfoil_polar.txt",skiprows=12)
+    polar_data = np.loadtxt("newfoil_polar.txt",skiprows=12)
     
     if len(polar_data)==0:
         print("polar data is not available")
@@ -92,16 +92,16 @@ def get_xfoil(airfoil):
 
 
 def install_nacas():
-    points_naca={"n2412":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca2412.txt",skiprows=1),
-                 "n2415":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca2415.txt",skiprows=1),
-                 "n2418":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca2418.txt",skiprows=1),
-                 "n2421":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca2421.txt",skiprows=1),
-                 "n4412":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca4412.txt",skiprows=1),
-                 "n4415":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca4415.txt",skiprows=1), 
-                 "n4418":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca4418.txt",skiprows=1),  
-                 "n4421":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca4421.txt",skiprows=1),    
-                 "n6412":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca6412.txt",skiprows=1),  
-                 "n2424":np.loadtxt("C:/Users/ENES/Desktop/xfoil/first pop/naca2424.txt",skiprows=1)
+    points_naca={"n2412":np.loadtxt("first pop/naca2412.txt",skiprows=1),
+                 "n2415":np.loadtxt("first pop/naca2415.txt",skiprows=1),
+                 "n2418":np.loadtxt("first pop/naca2418.txt",skiprows=1),
+                 "n2421":np.loadtxt("first pop/naca2421.txt",skiprows=1),
+                 "n4412":np.loadtxt("first pop/naca4412.txt",skiprows=1),
+                 "n4415":np.loadtxt("first pop/naca4415.txt",skiprows=1), 
+                 "n4418":np.loadtxt("first pop/naca4418.txt",skiprows=1),  
+                 "n4421":np.loadtxt("first pop/naca4421.txt",skiprows=1),    
+                 "n6412":np.loadtxt("first pop/naca6412.txt",skiprows=1),  
+                 "n2424":np.loadtxt("first pop/naca2424.txt",skiprows=1)
     
     }
     
